@@ -2,6 +2,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Footer from './components/Footer';
 import Registerpage from './components/Registerpage';
+import Loginpage from './components/Loginpage';
 
 const App = () => {
   // Simulación de autenticación (token) y total del carrito (valor fijo según el hito)
@@ -12,9 +13,10 @@ const App = () => {
     <div className="container-fluid bg-danger text-white p-0">
       <Navbar token={token} total={total} />
       <main className="container my-4">
-        <Home />
+        {/*       <Home /> */}
+        {/*  <Registerpage/> */}
+         <Loginpage/>
       </main>
-      <Registerpage/>
       <Footer />
     </div>
   );
