@@ -1,6 +1,6 @@
 import Header from './Header';
 import CardPizza from './CardPizza';
-import pizzas from '../data/pizzas';
+import { pizzas } from '../data/pizzas';
 
 const Home = () => {
   return (
@@ -14,6 +14,7 @@ const Home = () => {
             price={pizza.price}
             ingredients={pizza.ingredients}
             img={pizza.img}
+            desc={pizza.desc} // Se pasa la descripción como prop
           />
         ))}
       </div>
