@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Footer from './components/Footer';
+/* import Pizza from './components/Pizza'; */
 /* import Registerpage from './components/Registerpage'; */
 /* import Loginpage from './components/Loginpage'; */
 /* import Cart from './components/Cart'; */
@@ -15,6 +16,7 @@ const App = () => {
       <Navbar token={token} total={total} />
       <main className="container my-4">
               <Home />
+              {/* <Pizza/> */}
         {/*  <Registerpage/> */}
          {/* <Loginpage/> */}
        {/*   <Cart/> */}
