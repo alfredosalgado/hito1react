@@ -1,29 +1,31 @@
+import { Link } from "react-router-dom";
+
 const Navbar = ({ token, total }) => {
-  const formatNumber = (num) => num.toLocaleString("de-DE");
+  const formatNumber = (num) => (num ? num.toLocaleString("de-DE") : "0");
 
   return (
     <nav className="navbar navbar-expand-lg bg-dark navbar-dark shadow-sm">
       <div className="container d-flex justify-content-between align-items-center">
-        <a className="navbar-brand text-warning fw-bold" href="#">🍕 Pizzería Mamma Mía</a>
+        <Link className="navbar-brand text-warning fw-bold" to="/">🍕 Pizzería Mamma Mía</Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul className="navbar-nav gap-3">
-            <li className="nav-item"><a className="nav-link text-white" href="#">🍕 Home</a></li>
+            <li className="nav-item"><Link className="nav-link text-white" to="/">🍕 Home</Link></li>
             {token ? (
               <>
-                <li className="nav-item"><a className="nav-link text-white" href="#">🔓 Profile</a></li>
-                <li className="nav-item"><a className="nav-link text-white" href="#">🔒 Logout</a></li>
+                <li className="nav-item"><Link className="nav-link text-white" to="/profile">🔓 Profile</Link></li>
+                <li className="nav-item"><Link className="nav-link text-white" to="/logout">🔒 Logout</Link></li>
               </>
             ) : (
               <>
-                <li className="nav-item"><a className="nav-link text-white" href="#">🔐 Login</a></li>
-                <li className="nav-item"><a className="nav-link text-white" href="#">🔐 Register</a></li>
+                <li className="nav-item"><Link className="nav-link text-white" to="/login">🔐 Login</Link></li>
+                <li className="nav-item"><Link className="nav-link text-white" to="/register">🔐 Register</Link></li>
               </>
             )}
             <li className="nav-item">
-              <button className="btn btn-warning fw-bold">🛒 Total: ${formatNumber(total)}</button>
+              <Link to="/cart" className="btn btn-warning fw-bold">🛒 Total: ${formatNumber(total || 0)}</Link>
             </li>
           </ul>
         </div>
