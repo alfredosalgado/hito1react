@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
-const Navbar = ({ token, total }) => {
+const Navbar = ({ token }) => {
+  const { total } = useContext(CartContext);
   const formatNumber = (num) => (num ? num.toLocaleString("de-DE") : "0");
 
   return (
@@ -25,7 +28,7 @@ const Navbar = ({ token, total }) => {
               </>
             )}
             <li className="nav-item">
-              <Link to="/cart" className="btn btn-warning fw-bold">🛒 Total: ${formatNumber(total || 0)}</Link>
+              <Link to="/cart" className="btn btn-warning fw-bold">🛒 Total: ${formatNumber(total)}</Link>
             </li>
           </ul>
         </div>

@@ -1,27 +1,8 @@
-import { useState } from 'react';
-import { pizzaCart } from '../data/pizzas';
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
 const Cart = () => {
-  // Asegurar que cada pizza tenga la propiedad count definida al iniciar
-  const [cart, setCart] = useState(pizzaCart.map(pizza => ({ ...pizza, count: pizza.count || 1 })));
-
-  const increaseQuantity = (id) => {
-    setCart(prevCart => 
-      prevCart.map(item => 
-        item.id === id ? { ...item, count: item.count + 1 } : item
-      )
-    );
-  };
-
-  const decreaseQuantity = (id) => {
-    setCart(prevCart => 
-      prevCart
-        .map(item => item.id === id ? { ...item, count: item.count - 1 } : item)
-        .filter(item => item.count > 0) // Filtra los elementos con count > 0 para eliminarlos
-    );
-  };
-
-  const total = cart.reduce((acc, item) => acc + (item.price * item.count), 0);
+  const { cart, total, increaseQuantity, decreaseQuantity } = useContext(CartContext);
 
   return (
     <div className="container bg-light p-4 rounded">

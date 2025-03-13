@@ -1,4 +1,9 @@
-const CardPizza = ({ name, price, ingredients, img, desc }) => {
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
+
+const CardPizza = ({ name, price, ingredients, img, desc, pizza }) => {
+  const { addToCart } = useContext(CartContext);
+
   return (
     <div className="col-12 col-md-6 col-lg-4">
       <div className="card shadow-lg">
@@ -6,7 +11,7 @@ const CardPizza = ({ name, price, ingredients, img, desc }) => {
         <div className="card-body text-center bg-warning">
           <h5 className="card-title fw-bold text-dark">{name}</h5>
           <p className="card-text text-secondary">Precio: ${price.toLocaleString("es-CL")}</p>
-          <p className="card-text text-muted">{desc}</p> {/* Descripción agregada */}
+          <p className="card-text text-muted">{desc}</p>
           <ul className="list-unstyled">
             {ingredients.map((ingredient, index) => (
               <li key={index} className="text-muted">• {ingredient}</li>
@@ -14,7 +19,7 @@ const CardPizza = ({ name, price, ingredients, img, desc }) => {
           </ul>
           <div className="d-flex justify-content-between mt-3">
             <button className="btn btn-outline-dark">Ver más</button>
-            <button className="btn btn-danger">Añadir</button>
+            <button className="btn btn-danger" onClick={() => addToCart(pizza)}>Añadir</button>
           </div>
         </div>
       </div>

@@ -1,7 +1,6 @@
 import Header from '../components/Header';
 import CardPizza from '../components/CardPizza';
 import { useState, useEffect } from "react";
-/* import { pizzas } from '../data/pizzas'; */
 
 const Home = () => {
   const [pizzas, setPizzas] = useState([]);
@@ -19,6 +18,7 @@ const Home = () => {
 
     fetchPizzas();
   }, []);
+
   return (
     <div>
       <Header />
@@ -30,7 +30,8 @@ const Home = () => {
             price={pizza.price}
             ingredients={pizza.ingredients}
             img={pizza.img}
-            desc={pizza.desc} // Se pasa la descripción como prop
+            desc={pizza.desc}
+            pizza={pizza} // Pasamos el objeto completo para usarlo en CardPizza
           />
         ))}
       </div>
