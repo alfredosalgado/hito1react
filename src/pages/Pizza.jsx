@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
+import { CartContext } from "../context/CartContext"; // Importamos el contexto
 
 const Pizza = () => {
   const [pizza, setPizza] = useState(null);
   const { id } = useParams();
+  const { addToCart } = useContext(CartContext); // Obtenemos addToCart del contexto
 
   useEffect(() => {
     const fetchPizza = async () => {
@@ -41,9 +43,13 @@ const Pizza = () => {
                 <li key={index} className="text-muted">• {ingredient}</li>
               ))}
             </ul>
-            <div className="d-flex justify-content-between mt-3">
-              <button className="btn btn-outline-dark">Ver más</button>
-              <button className="btn btn-danger">Añadir</button>
+            <div className="d-flex justify-content-center mt-3">
+              <button 
+                className="btn btn-danger" 
+                onClick={() => addToCart(pizza)} // Añadimos funcionalidad
+              >
+                Añadir
+              </button>
             </div>
           </div>
         </div>

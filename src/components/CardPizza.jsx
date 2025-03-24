@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
 
-const CardPizza = ({ name, price, ingredients, img, desc, pizza }) => {
+const CardPizza = ({ name, price, ingredients, img, pizza }) => { // Quitamos 'desc' de los props
   const { addToCart } = useContext(CartContext);
 
   return (
@@ -12,7 +12,7 @@ const CardPizza = ({ name, price, ingredients, img, desc, pizza }) => {
         <div className="card-body text-center bg-warning">
           <h5 className="card-title fw-bold text-dark">{name}</h5>
           <p className="card-text text-secondary">Precio: ${price.toLocaleString("es-CL")}</p>
-          <p className="card-text text-muted">{desc}</p>
+          {/* Eliminamos la descripción */}
           <ul className="list-unstyled">
             {ingredients.map((ingredient, index) => (
               <li key={index} className="text-muted">• {ingredient}</li>

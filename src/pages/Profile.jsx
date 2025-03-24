@@ -1,5 +1,5 @@
 const Profile = () => {
-  const userEmail = "usuario@correo.com"; // Simulación de usuario
+  const userEmail = "test@test.com"; // Simulación de usuario
 
   return (
     <div className="text-center mt-5">
